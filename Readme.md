@@ -26,9 +26,9 @@ TODO: minify/uglify
 
 ```bash
 export AWS_PROFILE=gamma-quadrant
-aws s3 cp   index.html s3://gamma-quadrant-us-west-2-global-gammaquadrant.io/index.html --acl public-read
-aws s3 sync assets/    s3://gamma-quadrant-us-west-2-global-gammaquadrant.io/assets/    --acl public-read
-aws s3 sync images/    s3://gamma-quadrant-us-west-2-global-gammaquadrant.io/images/    --acl public-read
+aws s3 cp   index.html s3://gammaquadrant.io/index.html --acl public-read
+aws s3 sync assets/    s3://gammaquadrant.io/assets/    --acl public-read
+aws s3 sync images/    s3://gammaquadrant.io/images/    --acl public-read
 ```
 
 ## Credits
