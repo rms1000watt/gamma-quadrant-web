@@ -61,3 +61,4 @@ aws s3 sync images/    s3://gammaquadrant.io/images/    --acl public-read
 ## TODO
 
 - [ ] Add favicon.ico
+- [ ] Metadata for search engines
