@@ -20,8 +20,6 @@ python -m SimpleHTTPServer
 
 ## Build
 
-
-
 ```bash
 # Cache all sources locally, one time
 while read -r url; do
@@ -40,8 +38,13 @@ sed 's|@import url(.*||g' < assets/css/main.css > assets/css/tmp.css
 cat assets/css/tmp.css assets/css/font-awesome.min.css assets/css/source-sans-pro.css | csso > assets/css/min.css
 rm assets/css/tmp.css
 
-# Run JS & HTML
+# Bump CSS
+# MANUALLY CHANGE `min.css` ACCROSS THE BOARD TO SOMETHING LIKE `min-xx.css`
+
+# Run JS
 uglifyjs --compress --mangle -o assets/js/min.js -- assets/js/*.js
+
+# Run HTML
 html-minifier  --collapse-boolean-attributes --collapse-whitespace --decode-entities --html5 --process-conditional-comments --remove-attribute-quotes --remove-comments --remove-empty-attributes --remove-optional-tags --sort-attributes --sort-class-name --trim-custom-fragments --use-short-doctype index.raw.html > index.html
 ```
 
@@ -49,9 +52,10 @@ html-minifier  --collapse-boolean-attributes --collapse-whitespace --decode-enti
 
 ```bash
 export AWS_PROFILE=gamma-quadrant
-aws s3 cp   index.html s3://gammaquadrant.io/index.html --acl public-read
-aws s3 sync assets/    s3://gammaquadrant.io/assets/    --acl public-read
-aws s3 sync images/    s3://gammaquadrant.io/images/    --acl public-read
+aws s3 cp   index.html  s3://gammaquadrant.io/index.html  --acl public-read
+aws s3 cp   favicon.ico s3://gammaquadrant.io/favicon.ico --acl public-read
+aws s3 sync assets/     s3://gammaquadrant.io/assets/     --acl public-read
+aws s3 sync images/     s3://gammaquadrant.io/images/     --acl public-read
 ```
 
 ## Credits
